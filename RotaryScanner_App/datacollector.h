@@ -14,22 +14,33 @@
 #include <QDebug>
 #include <iostream>
 
+//template class for data collection and file handling
 template <typename Pos_t, typename Dist_t>
 class DataCollector
 {
 private:
+    //file path for written files
     const QString file_path = "C:\\QT_Apps\\Datafiles\\";
 
+    //filename created during constructing object
     QString filename;
+
+    //static member for calculating created file (and adds its number to filename)
     static int file_cnt;
 
+    //data collection (key: pos, val: dist)
     std::map <Pos_t, Dist_t> data;
 
 public:
     DataCollector<Pos_t, Dist_t>(QString);
 
+    //returns created filename
     QString get_filename();
+
+    //insert data (pos + dist) to data collector
     void put_data(Pos_t, Dist_t);
+
+    //write data file with propper column description
     void write_to_file(QString, QString);
 };
 
@@ -68,8 +79,6 @@ void DataCollector<Pos_t, Dist_t>::write_to_file(QString param1_name, QString pa
         for (auto itr = data.begin(); itr != data.end(); ++itr)
         {
             stream << QString ("%1%2\n").arg(itr->first, -white_spaces).arg(itr->second, -white_spaces);
-
-            //stream << itr->first << ": "  << itr->second << '\n';
         }
 
         file->close();
