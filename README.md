@@ -1,5 +1,5 @@
 # RotaryScanner
-Rotary Scanner based on Arduino, driven by C++ QT application and python data analysis
+Rotary Scanner based on Arduino (in library folder), driven by C++ QT application(in RotarySensor_App) and python data analysis (in FileAnalyze)
 
 Arduino:
  - stepper motor
